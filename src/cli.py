@@ -7,6 +7,7 @@ def main():
     parser = argparse.ArgumentParser(description="Convert PDF to Markdown.")
     parser.add_argument("input_file", help="Path to the input PDF file.")
     parser.add_argument("output_file", nargs="?", help="Path to the output Markdown file.", default=None)
+    parser.add_argument("--type", choices=["txt", "img"], default="txt", help="Conversion type: 'txt' (default, text-based) or 'img' (OCR-based).")
     
     args = parser.parse_args()
     
@@ -23,8 +24,8 @@ def main():
         
     try:
         converter = PDFConverter(input_path)
-        converter.save_markdown(output_path)
-        print(f"Successfully converted '{input_path}' to '{output_path}'")
+        converter.save_markdown(output_path, method=args.type)
+        print(f"Successfully converted '{input_path}' to '{output_path}' using method '{args.type}'")
         return 0
     except Exception as e:
         print(f"Error during conversion: {e}", file=sys.stderr)
