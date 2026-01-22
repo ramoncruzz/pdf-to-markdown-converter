@@ -1,0 +1,2 @@
+[console_scripts]
+pdf2md = src.cli:main

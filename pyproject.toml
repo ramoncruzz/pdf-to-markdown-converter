@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pdf-to-markdown-converter"
+version = "0.1.0"
+description = "A CLI tool to convert PDF files to Markdown."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "pymupdf==1.25.2",
+    "pytesseract",
+    "Pillow"
+]
+authors = [
+  {name = "Ramon Cruz"}
+]
+
+[project.scripts]
+pdf2md = "src.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
